@@ -12,7 +12,13 @@ use Illuminate\Support\Facades\Hash;
 class authController extends Controller
 {
     //register user
-    public function Register(UserRequest $rquest) {
+    /**
+     * @param UserRequest $rquest
+     *
+     * @return  \Illuminate\Http\Response
+     */
+    public function Register(UserRequest $rquest)
+    {
         $user = new User();
         $user->name = $rquest->name;
         $user->email = $rquest->email;
@@ -26,13 +32,19 @@ class authController extends Controller
         ], 200);
     }
     //Login user
-    public function Login(Request $request){
+    /**
+     * @param Request $request
+     *
+     * @return  \Illuminate\Http\Response
+     */
+    public function Login(Request $request)
+    {
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-        if(!Auth::attempt($credentials)){
+        if (!Auth::attempt($credentials)) {
             return response()->json([
                 'message' => 'Login information is invalid.'
             ], 401);
@@ -47,7 +59,11 @@ class authController extends Controller
         ]);
     }
     //Logout user
-    public function Logout(){
+    /**
+     * @return  \Illuminate\Http\Response
+     */
+    public function Logout()
+    {
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
         $user->tokens()->delete();
