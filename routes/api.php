@@ -4,6 +4,7 @@ use App\Http\Controllers\api\authController;
 use App\Http\Controllers\api\BlogController;
 use App\Http\Controllers\api\CommentController;
 use App\Http\Controllers\api\HomeController;
+use App\Http\Controllers\CategoriesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,8 +30,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 // Blog Routes
-Route::resource('blogs', BlogController::class)->except(['create', 'edit']);
+Route::apiResource('blogs', BlogController::class);
 
 // Comments Routes
 Route::get('comment/blog/{blog}', [CommentController::class, 'index']);
-Route::resource('comment', CommentController::class)->except(['create', 'edit', 'index']);
+Route::apiResource('comment', CommentController::class)->except(['index']);
+
+// Categories routes
+Route::apiResource('categories', CategoriesController::class);
