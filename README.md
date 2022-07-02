@@ -1,9 +1,9 @@
 <H1>Simple Blogging System Api</H1>
 <hr />
 <h3>* Features</h3>
-- Nested Categories
-- Authentication
-- News Latter
+<p> - Nested Categories</p>
+<p> - Authentication</p>
+<p> - News Latter</p>
 
 <b>Postman Collection Included</b>
 <hr />
