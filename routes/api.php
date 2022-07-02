@@ -5,6 +5,8 @@ use App\Http\Controllers\api\BlogController;
 use App\Http\Controllers\api\CommentController;
 use App\Http\Controllers\api\HomeController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\SubscribController;
+use App\Models\Subscriber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +40,8 @@ Route::apiResource('comment', CommentController::class)->except(['index']);
 
 // Categories routes
 Route::apiResource('categories', CategoriesController::class);
+
+
+// Subscrib Routes
+Route::post('subscrib', [SubscribController::class, 'subscrib'])->name('subscrib');
+Route::post('unsubscrib', [SubscribController::class, 'unSubscrib'])->name('unsubscrib');
